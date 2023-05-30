@@ -20,7 +20,7 @@ void puts_half(char *str)
 	}
 	else
 	{
-		half_lent = (lent - 1) / 2;
+		half_lent = (lent + 1) / 2;
 	}
 	while (half_lent < lent)
 	{
