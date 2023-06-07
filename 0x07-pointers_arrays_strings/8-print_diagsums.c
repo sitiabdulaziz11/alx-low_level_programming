@@ -9,8 +9,8 @@ void print_diagsums(int *a, int size)
 {
 	int y;
 
-	res1 = 0;
-	res2 = 0;
+	int res1 = 0;
+	int res2 = 0;
 
 	for (y = 0; y < size; y++)
 	{
