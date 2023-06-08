@@ -7,14 +7,15 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int y, res1, res2;
+	int y;
+
+	int res1 = 0;
+	int res2 = 0;
 
 	for (y = 0; y < size; y++)
 	{
-		res1 = 0;
-		res2 = 0;
-		res1 = res1 + a[(size + 1) * y];
-		res2 = res2 + a[(size - 1) * (y + 1)];
+		res1 += a[y * size + y];
+		res2 += a[(size - 1) * (y + 1)];
 	}
 	printf("%d, %d\n", res1, res2);
 }
