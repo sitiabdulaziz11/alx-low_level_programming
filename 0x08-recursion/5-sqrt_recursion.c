@@ -26,3 +26,4 @@ int sqrt_num(int n, int num)
 		return (-1);
 	else
 		return (sqrt_num(n, num + 1));
+}
