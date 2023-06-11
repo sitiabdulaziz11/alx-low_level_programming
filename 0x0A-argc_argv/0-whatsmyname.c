@@ -1,14 +1,11 @@
 #include <stdio.h>
 /**
- * main - program that print its name.
- * @argc: count
- * @argv: array
- * Return: 0
+ * main -  a program that prints its name, followed by a new line.
+ * @argc: array
+ * @argv: count
  */
 int main(int argc, char *argv[])
 {
-
-	printf("%s\n", argv[argc - 1];
-
-			return (0);
-			}
+	printf("%s\n", argv[argc - 1]);
+	return (0);
+}
