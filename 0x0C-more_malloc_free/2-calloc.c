@@ -8,8 +8,9 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+	unsigned char *nptr;
+	unsigned int t;
 	void *new_ptr;
-	unsigned char *nptr, t;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
