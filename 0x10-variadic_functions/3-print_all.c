@@ -17,15 +17,15 @@ void print_all(const char * const format, ...)
 	va_start(form, format);
 	while (format[r] != '\0')
 	{
-		if (format[r] == 'c')
-		{
-			c = (char) va_arg(form, int);
-			printf("%c, ", c);
-		}
-		else if (format[r] == 'i')
+		if (format[r] == 'i')
 		{
 			i = va_arg(form, int);
 			printf("%d, ", i);
+		}
+		else if (format[r] == 'c')
+		{
+			c = (char)va_arg(form, int);
+			printf("%c, ", c);
 		}
 		else if (format[r] == 'f')
 		{
@@ -35,10 +35,12 @@ void print_all(const char * const format, ...)
 		else if (format[r] == 's')
 		{
 			s = va_arg(form, char *);
-			if (s == NULL)
+			while (s == NULL)
+			{
 				printf("(nil)");
-			else
-				printf("%s", s);
+				break;
+			}
+			printf("%s", s);
 		}
 		r++;
 	}
