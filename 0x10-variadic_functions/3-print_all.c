@@ -1,49 +1,56 @@
-#include "variadic_functions.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include "variadic_functions.h"
 /**
  * print_all - print anything.
  * @format: list of type of argument.
- *
  */
 void print_all(const char * const format, ...)
 {
-	va_list form;
-	int i, r = 0;
-	char c;
-	float f;
-	char *s;
+	va_list par;
+	int i = 0, f, pu, char *str;
 
-	va_start(form, format);
-	while (format[r] != '\0')
+	va_start(par, format);
+	char arr[] = {'c', 'i', 'f', 's'};
+	while (format[i] && format != NULL )
 	{
-		if (format[r] == 'i')
+		f = 0;
+		while (arr[f] != format[i] && f < 4)
+			f++;
+		if (arr[f] == format[i])
 		{
-			i = va_arg(form, int);
-			printf("%d, ", i);
-		}
-		else if (format[r] == 'c')
-		{
-			c = (char)va_arg(form, int);
-			printf("%c, ", c);
-		}
-		else if (format[r] == 'f')
-		{
-			f = va_arg(form, double);
-			printf("%f, ", f);
-		}
-		else if (format[r] == 's')
-		{
-			s = va_arg(form, char *);
-			while (s == NULL)
+			switch (format[i])
 			{
-				printf("(nil)");
-				break;
+				case 'c':
+					{
+						pu = va_arg(par, int);
+						printf("%c, ", pu);
+						break;
+					}
+				case 'i':
+					{
+						pu = va_arg(par, int);
+						printf("%d, ", pu);
+						break;
+					}
+				case 'f':
+					{
+						pu = va_arg(par, double);
+						printf("%f, ", pu);
+						break;
+					}
+				case 's':
+					{
+						str = va_arg(par, char*);
+						if (str == NULL)
+							    printf("(nil)");
+						printf("%s", str);
+						break;
+					}
 			}
-			printf("%s", s);
-		}
-		r++;
+		}  
+		i++;           
 	}
-	va_end(form);
+	va_end(par);
 	printf("\n");
 }
