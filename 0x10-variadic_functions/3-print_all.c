@@ -10,7 +10,7 @@ void _switch(char format, va_list par);
 void print_all(const char * const format, ...)
 {
 	va_list par;
-	int i = 0, f, count;
+	int i = 0, f;
 	char *dif;
 	char form;
 	char arr[] = {'c', 'i', 'f', 's'};
@@ -22,15 +22,17 @@ void print_all(const char * const format, ...)
 	{
 		f++;
 	}
-	form = format[i];
 	i = 0;
-	while (form != '\0')
+	if (format[i] == arr[f])
 	{
-		_switch(form, par);
-		printf("%s", dif);
-		dif = ", ";
-		count++;
-		form = format[++i];
+		form = format[i];
+		while (form && format != NULL)
+		{
+			_switch(form, par);
+			printf("%s", dif);
+			dif = ", ";
+			form = format[++i];
+		}
 	}
 	va_end(par);
 	printf("\n");
