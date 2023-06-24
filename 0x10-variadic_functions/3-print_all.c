@@ -18,7 +18,7 @@ void print_all(const char * const format, ...)
 	dif = "";
 	va_start(par, format);
 	f = 0;
-	while (arr[f] != format[i] && f < 4)
+	while (arr[f] != format[i])
 	{
 		f++;
 	}
@@ -26,7 +26,7 @@ void print_all(const char * const format, ...)
 	if (format[i] == arr[f])
 	{
 		form = format[i];
-		while (form && format != NULL)
+		while (form && format != NULL && i < 4)
 		{
 			_switch(form, par);
 			printf("%s", dif);
@@ -74,6 +74,7 @@ void _switch(char format, va_list par)
 			if (str == NULL)
 			{
 				printf("(nil)");
+				break;
 			}
 			printf("%s", str);
 			break;
