@@ -10,10 +10,12 @@ void _switch(char format, va_list par);
 void print_all(const char * const format, ...)
 {
 	va_list par;
-	int i = 0, f;
+	int i = 0, f, count;
+	char *dif;
 	char form;
 	char arr[] = {'c', 'i', 'f', 's'};
 
+	dif = "";
 	va_start(par, format);
 	f = 0;
 	while (arr[f] != format[i] && f < 4)
@@ -21,14 +23,14 @@ void print_all(const char * const format, ...)
 		f++;
 	}
 	form = format[i];
-	if (arr[f] == format[i])
+	i = 0;
+	while (form != '\0')
 	{
-		i = 0;
-		while (form != '\0')
-		{
-			_switch(form, par);
-			form = format[++i];
-		}
+		_switch(form, par);
+		printf("%s", dif);
+		dif = ", ";
+		count++;
+		form = format[++i];
 	}
 	va_end(par);
 	printf("\n");
@@ -49,26 +51,28 @@ void _switch(char format, va_list par)
 		case 'c':
 		{
 			pu = va_arg(par, int);
-			printf("%c, ", pu);
+			printf("%c", pu);
 			break;
 		}
 		case 'i':
 		{
 			pu = va_arg(par, int);
-			printf("%d, ", pu);
+			printf("%d", pu);
 			break;
 		}
 		case 'f':
 		{
 			pp = va_arg(par, double);
-			printf("%f, ", pp);
+			printf("%f", pp);
 			break;
 		}
 		case 's':
 		{
 			str = va_arg(par, char*);
 			if (str == NULL)
+			{
 				printf("(nil)");
+			}
 			printf("%s", str);
 			break;
 		}
