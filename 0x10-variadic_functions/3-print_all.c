@@ -4,55 +4,73 @@
 /**
  * print_all - print anything.
  * @format: list of type of argument.
+ * @par: ...
  */
+void _switch(char format, va_list par);
 void print_all(const char * const format, ...)
 {
 	va_list par;
-	int i = 0, f, pu;
-	char *str;
-	float pp;
-
+	int i = 0, f;
+	char form;
 	char arr[] = {'c', 'i', 'f', 's'};
+
 	va_start(par, format);
-	while (format[i] && format != NULL )
+	f = 0;
+	while (arr[f] != format[i] && f < 4)
 	{
-		f = 0;
-		while (arr[f] != format[i] && f < 4)
-			f++;
-		if (arr[f] == format[i])
+		f++;
+	}
+	form = format[i];
+	if (arr[f] == format[i])
+	{
+		i = 0;
+		while (form != '\0')
 		{
-			switch (format[i])
-			{
-				case 'c':
-					{
-						pu = va_arg(par, int);
-						printf("%c, ", pu);
-						break;
-					}
-				case 'i':
-					{
-						pu = va_arg(par, int);
-						printf("%d, ", pu);
-						break;
-					}
-				case 'f':
-					{
-						pp = va_arg(par, double);
-						printf("%f, ", pp);
-						break;
-					}
-				case 's':
-					{
-						str = va_arg(par, char*);
-						if (str == NULL)
-							    printf("(nil)");
-						printf("%s", str);
-						break;
-					}
-			}
-		}  
-		i++;           
+			_switch(form, par);
+			form = format[++i];
+		}
 	}
 	va_end(par);
 	printf("\n");
+}
+/**
+ * _switch - switch case.
+ * @format: ...
+ * @par: ...
+ */
+void _switch(char format, va_list par)
+{
+	int pu;
+	char *str;
+	float pp;
+
+	switch (format)
+	{
+		case 'c':
+		{
+			pu = va_arg(par, int);
+			printf("%c, ", pu);
+			break;
+		}
+		case 'i':
+		{
+			pu = va_arg(par, int);
+			printf("%d, ", pu);
+			break;
+		}
+		case 'f':
+		{
+			pp = va_arg(par, double);
+			printf("%f, ", pp);
+			break;
+		}
+		case 's':
+		{
+			str = va_arg(par, char*);
+			if (str == NULL)
+				printf("(nil)");
+			printf("%s", str);
+			break;
+		}
+	}
 }
