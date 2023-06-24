@@ -8,10 +8,12 @@
 void print_all(const char * const format, ...)
 {
 	va_list par;
-	int i = 0, f, pu, char *str;
+	int i = 0, f, pu;
+	char *str;
+	float pp;
 
-	va_start(par, format);
 	char arr[] = {'c', 'i', 'f', 's'};
+	va_start(par, format);
 	while (format[i] && format != NULL )
 	{
 		f = 0;
@@ -35,8 +37,8 @@ void print_all(const char * const format, ...)
 					}
 				case 'f':
 					{
-						pu = va_arg(par, double);
-						printf("%f, ", pu);
+						pp = va_arg(par, double);
+						printf("%f, ", pp);
 						break;
 					}
 				case 's':
