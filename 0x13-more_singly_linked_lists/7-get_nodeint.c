@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * function that returns the nth node of a list.`
+ * get_nodeint_at_index - function that returns the nth node of a list.`
  * @head: pointer to pointer.
  * @index: index of the node, starting at 0.
  *
@@ -18,7 +18,7 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 		{
 			if (g == index)
 				return (ptr);
-			ptr = ptr->next;
+			Ptr = ptr->next;
 			g++;
 		}
 	}
