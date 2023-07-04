@@ -7,18 +7,13 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	const listint_t *newn;
 	size_t k;
 
-	newn = malloc(sizeof(listint_t));
-	if (newn == NULL)
-		return (-1);
-	newn = h;
 	k = 0;
-	while (newn != NULL)
+	while (h != NULL)
 	{
-		printf("%d\n", newn->n);
-		newn = newn->next;
+		printf("%d\n", h->n);
+		h = h->next;
 		k++;
 	}
 	return (k);
