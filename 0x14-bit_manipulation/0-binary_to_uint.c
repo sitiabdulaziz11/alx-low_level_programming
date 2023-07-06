@@ -24,5 +24,5 @@ unsigned int binary_to_uint(const char *b)
 		total = (total << 1) | w;
 		b++;
 	}
-	return total;
+	return (total);
 }
