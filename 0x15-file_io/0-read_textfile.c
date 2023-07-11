@@ -17,11 +17,26 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fd == -1)
 		return (0);
 	arr = malloc(sizeof(char) * letters);
+	if (arr == NULL)
+	{
+		close(fd);
+		return (0);
+	}
 	rd = read(fd, arr, letters);
+	if (rd == -1)
+	{
+		free(arr);
+		close(fd);
+		return (0);
+	}
 	wt = write(1, arr, rd);
 
-	if (wt == -1)
+	if (wt == -1 || (ssize_t)wt != rd)
+	{
+		free(arr);
+		close(fd);
 		return (0);
+	}
 	free(arr);
 	close(fd);
 	return (wt);
