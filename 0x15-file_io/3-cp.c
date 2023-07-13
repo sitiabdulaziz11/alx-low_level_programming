@@ -43,7 +43,7 @@ void copy_file(const char *f_from, const char *f_to)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f_to);
 		exit(99);
 	}
-	while ((rdbyt = read(fd_from, arr, BU_SIZE)) > 0)
+	while ((rdbyt = read(fd_from, arr, 1024)) > 0)
 	{
 		wtbyt = write(fd_to, arr, rdbyt);
 		if (wtbyt == -1 || wtbyt != rdbyt)
