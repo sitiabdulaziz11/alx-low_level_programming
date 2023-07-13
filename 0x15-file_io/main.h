@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define BU_SIZE 1024
 
 int _putchar(char c);
 void copy_file(const char *f_from, const char *f_to);
