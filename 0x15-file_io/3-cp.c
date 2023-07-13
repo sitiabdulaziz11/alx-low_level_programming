@@ -16,7 +16,7 @@ int main(int ac, char **argv)
 	}
 	copy_file(argv[1], argv[2]);
 
-	return (0);
+	exit(0);
 }
 /**
  * copy_file - function that copy one file to other.
@@ -31,7 +31,7 @@ void copy_file(const char *f_from, const char *f_to)
 	char arr[BU_SIZE];
 
 	fd_from = open(f_from, O_RDONLY);
-	if (fd_from == -1)
+	if (!f_from || fd_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f_from);
 		exit(98);
@@ -63,7 +63,7 @@ void copy_file(const char *f_from, const char *f_to)
 	}
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error:Can't close fd %d\n", (fd_from == -1) ? fd_to : fd_from);
+		dprintf(STDERR_FILENO, "Error:Can't close fd %d\n", (fd_from == -1) ? fd_from : fd_to);
 		exit(100);
 	}
 }
