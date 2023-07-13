@@ -27,7 +27,7 @@ int main(int ac, char **argv)
 void copy_file(const char *f_from, const char *f_to)
 {
 	int fd_from, fd_to;
-	ssize_t rdbyt, wtbyt;
+	int rdbyt, wtbyt;
 	char arr[1024];
 
 	fd_from = open(f_from, O_RDONLY);
