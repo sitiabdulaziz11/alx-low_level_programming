@@ -7,6 +7,8 @@
 #include <unistd.h>
 
 
+#define BU_SIZE 1024
+
 int _putchar(char c);
 void copy_file(const char *f_from, const char *f_to);
 ssize_t read_textfile(const char *filename, size_t letters);
