@@ -21,7 +21,7 @@ unsigned int binary_to_uint(const char *b)
 
 		r = *b - '0';
 
-		sum = (sum << 1) | w;
+		sum = (sum << 1) | r;
 		b++;
 	}
 	return (sum);
