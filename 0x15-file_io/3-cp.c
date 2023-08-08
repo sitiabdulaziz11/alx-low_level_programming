@@ -24,8 +24,9 @@ int main(int ac, char *av[])
  */
 void displayUsageError(const char *pname)
 {
+	(void)pname;
 
-	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n", pname);
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	exit(97);
 }
 /**
