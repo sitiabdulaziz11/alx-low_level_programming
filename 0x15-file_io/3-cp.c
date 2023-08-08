@@ -25,7 +25,7 @@ int main(int ac, char *av[])
 void displayUsageError(const char *pname)
 {
 
-	dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", pname);
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n", pname);
 	exit(97);
 }
 /**
