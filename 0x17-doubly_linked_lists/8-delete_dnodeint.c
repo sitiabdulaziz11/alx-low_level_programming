@@ -1,17 +1,17 @@
-#include "main.h"
+#include "lists.h"
 
 /**
- * delete_dnodeint_at_index - function that deletes the node at index of a list.
+ * delete_dnodeint_at_index - function that deletes the node at index of a list
  * @head: head
  * @index: index
  *
- * Returns: 1 if it succeeded, -1 if it failed
+ * Return: 1 if it succeeded, -1 if it failed
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *ptr;
 	unsigned int cou;
-	
+
 	if (*head == NULL)
 		return (-1);
 
@@ -35,4 +35,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	if (ptr->prev != NULL)
 		ptr->prev->next = ptr->next;
 	if (ptr->next != NULL)
-
+		ptr->next->prev = ptr->prev;
+	free(ptr);
+	return (1);
+}
