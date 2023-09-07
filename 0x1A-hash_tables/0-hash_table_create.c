@@ -16,14 +16,14 @@ hash_table_t *hash_table_create(unsigned long int size)
 		return (NULL);
 
 	newt->size = size;
-	newt->array = malloc(sizeof(hash_node_t*) * size);
+	newt->array = malloc(sizeof(hash_node_t *) * size);
 	if (newt->array == NULL)
 	{
 		free(newt);
-		return NULL;
+		return (NULL);
 	}
 
-	for (j = 0; j <size; j++)
+	for (j = 0; j < size; j++)
 		newt->array[j] = NULL;
 	return (newt);
 }
