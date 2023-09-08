@@ -19,10 +19,10 @@ unsigned long int hash_djb2(const unsigned char *str)
 	return (hash);
 }
 /**
- * key_index -  function that gives you the index of a key.
+ * key_index - function that gives you the index of a key.
  * @key: key
  * @size: size of the array.
- * Returns the index at which the key/value should be stord.
+ * Return: the index at which the key/value should be stord.
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
