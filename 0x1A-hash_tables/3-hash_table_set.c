@@ -13,29 +13,27 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int indx = 0;
 	hash_node_t *newn = NULL, *dt = NULL;
 
-	if (ht == NULL || key == NULL)
+	if (ht == NULL || key == NULL || (strcmp(key, "") == 0))
 		return (0);
 
-	indx = key_index((const unsigned char *)key, ht->size);
+	indx = key_index((unsigned char *)key, ht->size);
 	dt = ht->array[indx];
 
-	if (dt != NULL && strcmp(dt->key, key) == 0)
+	if (dt && strcmp(key, dt->key) == 0)
 	{
 		free(dt->value);
 		dt->value = strdup(value);
 		return (1);
 	}
-	else
-	{
-		newn = malloc(sizeof(hash_node_t));
 
-		if (newn == NULL)
-			return (0);
+	newn = malloc(sizeof(hash_node_t));
 
-		newn->key = strdup(key);
-		newn->value = strdup(value);
-		newn->next = dt;
-		dt = newn;
-		return (1);
-	}
+	if (newn == NULL)
+		return (0);
+
+	newn->key = strdup(key);
+	newn->value = strdup(value);
+	newn->next = dt;
+	dt = newn;
+	return (1);
 }
